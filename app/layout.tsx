@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const notoSans = Noto_Sans_JP({
+  weight: ["400", "500", "700"], // 使うウェイトを指定
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -17,10 +12,21 @@ export const metadata: Metadata = {
   description: "ココゼンの制作物ポートフォリオサイト",
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "cocozen-museum",
     description: "制作物ポートフォリオサイト",
+    siteName: "cocozen-museum",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "cocozen-museum",
+    description: "制作物ポートフォリオサイト",
+  },
+  robots: {
+    index: true,
+    follow: false,
   },
 };
 
@@ -28,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${notoSans.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
