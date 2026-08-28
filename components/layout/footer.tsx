@@ -1,6 +1,6 @@
 import PageTopButton from "@/components/ui/buttons/pageTopButton";
-import FooterLink from "@/components/ui/links/footerLink";
 import SNSLinks from "@/components/layout/SNSLinks";
+import FooterLink from "@/components/ui/links/footerLink";
 
 
 export default function Footer() {
