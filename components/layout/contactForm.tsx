@@ -7,6 +7,7 @@ import TextArea from "@/components/ui/textarea";
 import ErrorText from "@/components/ui/errorText";
 import Button from "@/components/ui/button";
 import ConfirmModal from "./confirmModal";
+
 type FormValues = {
   name: string;
   email: string;
@@ -19,6 +20,7 @@ export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState<FormValues | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function handleConfirm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,83 +40,98 @@ export default function ContactForm() {
     if (Object.keys(newErrors).length > 0) return;
 
     setFormValues(values);
-    setIsModalOpen(true); // ここでモーダルを開く
+    setSubmitError(null);
+    setIsModalOpen(true);
   }
 
   async function handleSubmit() {
     if (!formValues) return;
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formValues),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formValues),
+      });
 
-    setIsSubmitting(false);
+      const data = await res.json();
 
-    if (res.ok) {
-      router.push("/contact/complete"); // ← 送信成功時に遷移
-    } else {
-      // 失敗時の処理(エラーメッセージ表示等)、必要なら後で追加
-      setIsModalOpen(false);
+      if (res.ok) {
+        router.push("/contact/complete");
+        return;
+      }
+
+      setSubmitError(data.error ?? "送信に失敗しました。時間をおいて再度お試しください。");
+    } catch {
+      setSubmitError("通信エラーが発生しました。ネットワーク環境をご確認ください。");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
   return (
     <>
-      <form className="space-y-6" onSubmit={handleConfirm}>
-        <div>
-          <Label 
-            htmlFor="name"
-            text="お名前"
-          />
-          <Input 
-            id="name"
-            name="name"
-            type="text"
-            isRequired={true}
-            placeholder="米倉 巧"
-          />
-          <ErrorText
-            message={errors.name}
-          />
+      <form onSubmit={handleConfirm}>
+        <div className="space-y-6">
+          <div>
+            <Label 
+              htmlFor="name"
+              text="お名前"
+              isRequired={true}
+            />
+            <Input 
+              id="name"
+              name="name"
+              type="text"
+              isRequired={true}
+              placeholder="米倉 巧"
+            />
+            <ErrorText
+              message={errors.name}
+            />
+          </div>
+          
+          <div>
+            <Label 
+              htmlFor="email"
+              text="メールアドレス"
+              isRequired={true}
+            />
+            <Input 
+              id="email"
+              name="email"
+              type="email"
+              isRequired={true}
+              placeholder="hoge@examle.com"
+            />
+            <ErrorText
+              message={errors.email}
+            />
+          </div>
+          
+          <div>
+            <Label 
+              htmlFor="message"
+              text="本文"
+              isRequired={true}
+            />
+            <TextArea 
+              id="message"
+              name="message"
+              isRequired={true}
+              placeholder="お問い合わせ内容"
+              maxLength={4096}
+            />
+            <ErrorText
+              message={errors.message}
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button type="submit" text="確認" />
+          </div>
         </div>
-        
-        <div>
-          <Label 
-            htmlFor="email"
-            text="メールアドレス"
-          />
-          <Input 
-            id="email"
-            name="email"
-            type="email"
-            isRequired={true}
-            placeholder="hoge@examle.com"
-          />
-          <ErrorText
-            message={errors.email}
-          />
-        </div>
-        
-        <div>
-          <Label 
-            htmlFor="message"
-            text="本文"
-          />
-          <TextArea 
-            id="message"
-            name="message"
-            isRequired={true}
-            placeholder="お問い合わせ内容"
-            maxLength={4096}
-          />
-          <ErrorText
-            message={errors.message}
-          />
-        </div>
-        <Button type="submit" text="確認" />
       </form>
 
       {isModalOpen && formValues && (
@@ -122,6 +139,7 @@ export default function ContactForm() {
           values={formValues}
           onCancel={() => setIsModalOpen(false)}
           onSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
         />
       )}
     </>
