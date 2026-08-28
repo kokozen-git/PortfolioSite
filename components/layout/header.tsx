@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header 
-      className="top-0 left-0 w-full z-10 flex items-center justify-between px-16 py-6"
+      className="relative top-0 left-0 w-full z-10 flex items-center justify-between px-16 py-6 border-b-3 border-[var(--underline-color)]"
       style={{ "--underline-color": linkStyle.underLine } as React.CSSProperties}
     >
       {/* ロゴ */}

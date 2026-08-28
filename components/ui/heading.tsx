@@ -1,12 +1,28 @@
-export function H1({ children }: { children: React.ReactNode }) {
+type HeddingProps = {
+  id?:string;
+  className?: string;
+  children: React.ReactNode;
+};
+
+export function H1({
+  id,
+  className,
+  children
+}: HeddingProps) {
   return (
-    <h1 className="text-3xl font-bold mb-2">{children}</h1>
+    <h1
+      id={id}
+      className={`text-4xl font-bold ${className}`}
+    >{children}</h1>
   );
 }
 
-export function H2({ children }: { children: React.ReactNode }) {
+export function H2({
+  className,
+  children
+}: HeddingProps) {
   return (
-    <h2 className="text-xl font-bold mb-6">{children}</h2>
+    <h2 className={`text-xl font-bold ${className}`}>{children}</h2>
   );
 }
 

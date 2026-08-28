@@ -19,12 +19,15 @@ export default function ConfirmModal({
   onSubmit,
   isSubmitting = false,
 }: ConfirmModalProps) {
+  
+  //モーダルの開閉
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = ""; // モーダルが閉じたら元に戻す
+      document.body.style.overflow = ""; 
     };
   }, []);
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
