@@ -5,6 +5,7 @@ import PageHero from "@/components/layout/PageHero";
 import { Text } from "@/components/ui/text";
 import InlineLink from "@/components/ui/links/InlineLink";
 import Container from "@/components/ui/container";
+import Footer from "@/components/layout/footer";
 
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
           <ContactForm />
         </Container>
       </Main>
+      <Footer/>
     </>
   );
 }

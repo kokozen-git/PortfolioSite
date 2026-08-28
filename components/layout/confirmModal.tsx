@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { H2 } from "@/components/ui/heading";
 import ConfirmText from "@/components/ui/confirmText";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/buttons/button";
 type ConfirmModalProps = {
   values: {
     name: string;

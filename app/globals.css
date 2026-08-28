@@ -3,9 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --mainColor-dark : #032932;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@keyframes arrow-bounce-up {
+  0% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(3px); 
+  }
+  100% {
+    transform: translateY(-4px); 
+  }
+}
+
+.animate-arrow-bounce-up {
+  animation: arrow-bounce-up 0.3s ease-out forwards;
 }

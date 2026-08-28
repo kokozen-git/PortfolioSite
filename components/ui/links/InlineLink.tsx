@@ -11,8 +11,7 @@ export default function InlineLink({
 }) {
   return (
     <Link href={href} className={`underline underline-offset-2 hover:opacity-70 transition-opacity ${className}`}>
-        {children}
+      {children}
     </Link>
-
   );
 }
