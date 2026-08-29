@@ -25,7 +25,7 @@ export default function PageTopButton() {
           flex h-10 w-7 items-center justify-center rounded-full 
           border border-white/60 transition-colors duration-300 
           group-hover:bg-white group-hover:text-(--mainColor)
-          ${isTouched ? "group-hover:bg-white group-hover:text-(--mainColor)" : "bg-white"} 
+          ${isTouched ? "group-hover:bg-white group-hover:text-(--mainColor)" : ""} 
         `}
       >
         <svg
