@@ -4,17 +4,22 @@ export default function HeaderLink({
   href,
   className = "",
   children,
+  onClick,
 }: { 
   href: string,
   className?: string
   children: React.ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <Link
-        href={href} 
-        className={`relative text-xl font-bold inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-0 after:bg-[var(--mainColor)] after:transition-all after:duration-300 hover:after:w-full ${className}`}
+      href={href} 
+      onClick={onClick}
+      className={`
+        relative text-xl font-bold inline-block ${className}
+      `}
     >
-        {children}
+      {children}
     </Link>
   );
 }
