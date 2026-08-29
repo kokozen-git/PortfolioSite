@@ -1,3 +1,6 @@
+'use client';
+import { useState , useEffect} from 'react';
+
 import Image from "next/image";
 import Link from "next/link";
 import HeaderLink from "@/components/ui/links/headerLink";
@@ -7,6 +10,15 @@ import HamburgerBtn from "@/components/ui/buttons/hamburger";
 
 export default function Header() {
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const headerLinks = [
     pagePath.top,
     pagePath.about,
@@ -15,13 +27,12 @@ export default function Header() {
     pagePath.contact,
   ];
 
-  const isOpen = false;
   return (
     <header 
-      className="relative top-0 left-0 w-full z-10 flex items-center justify-between px-5 md:px-16 py-6 border-b-3 border-[var(--mainColor)]"
+      className="relative z-30 top-0 left-0 w-full flex items-center justify-between px-5 md:px-16 py-6 border-b-3 border-[var(--mainColor)]"
     >
       <Link href="/">
-        <div className="relative w-30 md:w-36 h-12">
+        <div className="relative w-30 md:w-36 h-12 z-10">
           <Image
             src="/images/logo.svg"
             alt="cocozen-museum_logo"
@@ -32,11 +43,11 @@ export default function Header() {
         </div>
       </Link>
       
-      <HamburgerBtn />
+      <HamburgerBtn isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}/>
 
       <PageLinks
-        label="ヘッダーナビ"
-        nav_className="hidden md:block"
+        label="PCサイズ：ヘッダーナビ"
+        nav_className="hidden md:block "
         ul_className="flex gap-8"
         links={headerLinks}
         
@@ -46,9 +57,31 @@ export default function Header() {
           </HeaderLink>
         )}
       />
-
-      
-     
+      {isMenuOpen && (
+        <div
+          onClick={() => setIsMenuOpen(false)}
+          className="fixed inset-0 bg-black/50 z-10 md:hidden"
+        />
+      )}
+      <div className={`fixed w-[80%] h-screen bg-(--mainColor) top-0 right-0 z-30 md:hidden pt-24 transition-transform duration-300
+        ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <PageLinks
+          label="SPサイズ：ヘッダーナビ"
+          ul_className="text-white px-6"
+          links={headerLinks}
+          
+          renderItem={(link) => (
+            <>
+              <HeaderLink href={link.href} className='py-3 hover:text-white/80 w-full' >
+                {link.text}
+              </HeaderLink>
+              <hr/>
+            </>
+            
+          )}
+        />
+      </div>
     </header>
   );
 }

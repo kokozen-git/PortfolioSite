@@ -24,7 +24,7 @@ export default function PageHero({
             <div className="absolute inset-0 bg-black/40" />
   
             {/* テキストは相対配置＆z-indexで前面に */}
-            <div className="relative z-10">
+            <div className="relative">
                 <H1 
                     id={sectionName}
                     className="w-[70%] text-white"
