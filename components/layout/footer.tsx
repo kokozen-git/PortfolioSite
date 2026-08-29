@@ -1,8 +1,12 @@
+'use client';
+import { useState } from "react";
+
 import PageTopButton from "@/components/ui/buttons/pageTopButton";
 import SNSLinks from "@/components/layout/SNSLinks";
 import FooterLink from "@/components/ui/links/footerLink";
 import {pagePath} from "@/constants/pagePath";
 import PageLinks from "./pageLinks";
+
 
 export default function Footer() {
 
@@ -20,6 +24,14 @@ export default function Footer() {
     ],
   };
 
+  const [isTouched,setIsTouched] = useState(false);
+  const handleClick = (e:React.MouseEvent<HTMLAnchorElement>) =>{
+    if(window.matchMedia("(hover:none)").matches && !isTouched){
+      e.preventDefault();
+      setIsTouched(true);
+    }
+  }
+
   return (
     <footer className="bg-(--mainColor-dark) text-white pt-16 py-6 px-4 md:px-6 w-full">
       <div className="md:flex md:gap-4 md:justify-between md:items-center md:px-12">
@@ -32,7 +44,7 @@ export default function Footer() {
             links={footerLinks.up}
             
             renderItem={(link) => (
-              <FooterLink href={link.href}>
+              <FooterLink href={link.href}  onClick={handleClick}>
                 {link.text}
               </FooterLink>
             )}
@@ -44,7 +56,7 @@ export default function Footer() {
             links={footerLinks.under}
             
             renderItem={(link) => (
-              <FooterLink href={link.href}>
+              <FooterLink href={link.href}  onClick={handleClick}>
                 {link.text}
               </FooterLink>
             )}

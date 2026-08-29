@@ -26,6 +26,7 @@ export default function Header() {
       setIsTouched(true);
     }
   }
+  
   const headerLinks = [
     pagePath.top,
     pagePath.about,
