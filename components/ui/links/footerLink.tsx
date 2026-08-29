@@ -1,7 +1,6 @@
-// FooterLink.tsx
 "use client";
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function FooterLink({ 
   href,
@@ -19,7 +18,11 @@ export default function FooterLink({
       href={href}
       onTouchStart={() => setIsTouched(true)}
       onTouchEnd={() => setIsTouched(false)}
-      className={`transition-opacity text-sm text-white ${isTouched ? "opacity-50" : "opacity-100"} hover:opacity-50 ${className}`}
+      className={
+        `transition-opacity text-sm text-white 
+        ${isTouched ? "opacity-50" : "opacity-100"} 
+        hover:opacity-50 ${className}
+      `}
     >
       {children}
     </Link>
