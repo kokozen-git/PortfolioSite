@@ -13,18 +13,13 @@ export default function FooterLink({
   children: React.ReactNode;
 }) {
   const [isTouched, setIsTouched] = useState(false);
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (window.matchMedia("(hover:none)").matches && !isTouched) {
-      e.preventDefault();
-      setIsTouched(true);
-    }
-  };
 
   return (
     <Link 
-      href={href} 
-      className={`hover:opacity-50 transition-opacity text-sm text-white ${className}`}
-      onClick={handleClick}
+      href={href}
+      onTouchStart={() => setIsTouched(true)}
+      onTouchEnd={() => setIsTouched(false)}
+      className={`transition-opacity text-sm text-white ${isTouched ? "opacity-50" : "opacity-100"} hover:opacity-50 ${className}`}
     >
       {children}
     </Link>
