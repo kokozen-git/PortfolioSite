@@ -1,20 +1,35 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 
 export default function HeaderLink({ 
   href,
   className = "",
+  spHoverClass = "",
+  spNonHoverClass = "",
   children,
 }: { 
   href: string,
-  className?: string
-  children: React.ReactNode;
+  className?: string,
+  spHoverClass?: string,
+  spNonHoverClass?: string,
+  children: React.ReactNode,
 }) {
+
+  const [isTouched, setIsTouched] = useState(false);
+
   return (
     <Link
-        href={href} 
-        className={`relative text-xl font-bold inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-0 after:bg-[var(--mainColor)] after:transition-all after:duration-300 hover:after:w-full ${className}`}
+      href={href} 
+      onTouchStart={() => setIsTouched(true)}
+      onTouchEnd={() => setIsTouched(false)}
+      className={`
+        relative text-xl font-bold inline-block 
+        ${isTouched ? spHoverClass : spNonHoverClass} 
+        ${className}
+      `}
     >
-        {children}
+      {children}
     </Link>
   );
 }

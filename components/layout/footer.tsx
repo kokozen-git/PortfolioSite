@@ -4,6 +4,7 @@ import FooterLink from "@/components/ui/links/footerLink";
 import {pagePath} from "@/constants/pagePath";
 import PageLinks from "./pageLinks";
 
+
 export default function Footer() {
 
   const footerLinks = {
@@ -32,7 +33,7 @@ export default function Footer() {
             links={footerLinks.up}
             
             renderItem={(link) => (
-              <FooterLink href={link.href}>
+              <FooterLink href={link.href} >
                 {link.text}
               </FooterLink>
             )}
@@ -44,7 +45,7 @@ export default function Footer() {
             links={footerLinks.under}
             
             renderItem={(link) => (
-              <FooterLink href={link.href}>
+              <FooterLink href={link.href} >
                 {link.text}
               </FooterLink>
             )}

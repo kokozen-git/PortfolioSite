@@ -19,6 +19,14 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
+  const [isTouched,setIsTouched] = useState(false);
+  const handleClick = (e:React.MouseEvent<HTMLAnchorElement>) =>{
+    if(window.matchMedia("(hover:none)").matches && !isTouched){
+      e.preventDefault();
+      setIsTouched(true);
+    }
+  }
+
   const headerLinks = [
     pagePath.top,
     pagePath.about,
@@ -52,7 +60,15 @@ export default function Header() {
         links={headerLinks}
         
         renderItem={(link) => (
-          <HeaderLink href={link.href}>
+          <HeaderLink href={link.href} 
+            className={
+              `after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] 
+              after:w-0 after:bg-[var(--mainColor)] after:transition-all after:duration-300 
+              hover:after:w-full `
+            }
+            spHoverClass = "after:w-full"
+            spNonHoverClass = "after:0"
+          >
             {link.text}
           </HeaderLink>
         )}
@@ -73,12 +89,16 @@ export default function Header() {
           
           renderItem={(link) => (
             <>
-              <HeaderLink href={link.href} className='py-3 hover:text-white/80 w-full' >
+              <HeaderLink 
+                href={link.href} 
+                className='py-3 hover:text-white/80 w-full'
+                spHoverClass = "text-white/80"
+                spNonHoverClass = "text-white"
+              >
                 {link.text}
               </HeaderLink>
               <hr/>
             </>
-            
           )}
         />
       </div>
