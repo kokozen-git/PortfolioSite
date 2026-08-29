@@ -63,7 +63,6 @@ export default function Header() {
             className={
               "after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-0 after:bg-[var(--mainColor)] after:transition-all after:duration-300 hover:after:w-full "
             }
-            onClick={handleClick}
           >
             {link.text}
           </HeaderLink>
@@ -85,7 +84,7 @@ export default function Header() {
           
           renderItem={(link) => (
             <>
-              <HeaderLink href={link.href} className='py-3 hover:text-white/80 w-full' >
+              <HeaderLink href={link.href} className='py-3 hover:text-white/80 w-full' onClick={handleClick}>
                 {link.text}
               </HeaderLink>
               <hr/>
