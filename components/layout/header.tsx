@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderLink from "@/components/ui/links/headerLink";
 import {pagePath} from "@/constants/pagePath";
-import PageLinks from "./pageLinks";
-import HamburgerBtn from "../ui/buttons/hamburger";
+import PageLinks from "@/components/layout/pageLinks";
+import HamburgerBtn from "@/components/ui/buttons/hamburger";
 
 export default function Header() {
 
@@ -33,7 +33,7 @@ export default function Header() {
       </Link>
       
       <HamburgerBtn />
-      
+
       <PageLinks
         label="ヘッダーナビ"
         nav_className="hidden md:block"
