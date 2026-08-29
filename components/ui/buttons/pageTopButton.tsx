@@ -17,7 +17,7 @@ export default function PageTopButton() {
       className="group flex items-center gap-4 text-white hover:cursor-pointer w-fit h-fit"
     >
       <span
-        className="flex h-10 w-7 items-center justify-center rounded-full border border-white/60 transition-colors duration-300 group-hover:bg-white group-hover:text-[#1e3a5f]"
+        className="flex h-10 w-7 items-center justify-center rounded-full border border-white/60 transition-colors duration-300 group-hover:bg-white group-hover:text-(--mainColor)"
       >
         <svg
           width="20"

@@ -1,50 +1,54 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeaderLink from "@/components/ui/links/headerLink";
+import {pagePath} from "@/constants/pagePath";
+import PageLinks from "./pageLinks";
+import HamburgerBtn from "../ui/buttons/hamburger";
 
 export default function Header() {
 
-  const links = [
-    { href:"/about", text:"about"},
-    { href: "/portfolio", text: "museum" },
-    { href: "/blog", text: "blog" },
-    { href: "/contact", text: "contact" },
+  const headerLinks = [
+    pagePath.top,
+    pagePath.about,
+    pagePath.museum,
+    pagePath.blog,
+    pagePath.contact,
   ];
 
-  const linkStyle = {
-    underLine:"#014555",
-  }
-
-
+  const isOpen = false;
   return (
     <header 
-      className="relative top-0 left-0 w-full z-10 flex items-center justify-between px-16 py-6 border-b-3 border-[var(--underline-color)]"
-      style={{ "--underline-color": linkStyle.underLine } as React.CSSProperties}
+      className="relative top-0 left-0 w-full z-10 flex items-center justify-between px-5 md:px-16 py-6 border-b-3 border-[var(--mainColor)]"
     >
-      {/* ロゴ */}
       <Link href="/">
-        <Image
-        src="/images/logo.svg"
-        alt="cocozen-museum_logo"
-        width={140}
-        height={48}
-        priority
-        />
+        <div className="relative w-30 md:w-36 h-12">
+          <Image
+            src="/images/logo.svg"
+            alt="cocozen-museum_logo"
+            fill
+            className="fit"
+            priority
+          />
+        </div>
       </Link>
+      
+      <HamburgerBtn />
+      
+      <PageLinks
+        label="ヘッダーナビ"
+        nav_className="hidden md:block"
+        ul_className="flex gap-8"
+        links={headerLinks}
+        
+        renderItem={(link) => (
+          <HeaderLink href={link.href}>
+            {link.text}
+          </HeaderLink>
+        )}
+      />
 
-      {/* ナビゲーション */}
-      <nav>
-        <ul className="flex gap-8 text-xl font-bold">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-               href={link.href} 
-               className="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:w-0 after:bg-[var(--underline-color)] after:transition-all after:duration-300 hover:after:w-full"
-              >{link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      
+     
     </header>
   );
 }

@@ -1,15 +1,16 @@
 import Link from "next/link";
 
 export default function FooterLink({ 
-    href,
-    children,
+  href,
+  className = "",
+  children,
 }: { 
-    href: string,
-    children: React.ReactNode;
-    className?: string
+  href: string,
+  className?: string
+  children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className={`hover:opacity-50 transition-opacity text-sm text-white`}>
+    <Link href={href} className={`hover:opacity-50 transition-opacity text-sm text-white ${className}`}>
       {children}
     </Link>
   );
