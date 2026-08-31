@@ -1,13 +1,11 @@
-import Header from "@/components/templetes/header";
-import Main from "@/components/layout/main";
 import Container from "@/components/ui/container";
+
 import { H1 ,H2 } from "@/components/atoms/heading/page";
-import { Text } from "@/components/atoms/Text/Page";
+import Text        from "@/components/atoms/Text/text";
+
 export default function Home() {
   return (
     <>
-      <Header/>
-      <Main>
         <Container>
           <H1 className="text-black text-center">
             プライバシーポリシー
@@ -77,8 +75,6 @@ export default function Home() {
             </Text>
           </div>
         </Container>
-    
-      </Main>
     </>
   );
 }

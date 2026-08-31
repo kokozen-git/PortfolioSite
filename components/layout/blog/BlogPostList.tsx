@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import Image from "next/image";
-import { Text } from "@/components/atoms/Text/Page";
+import Text        from "@/components/atoms/Text/text";
 
 type Post = {
   title: string;
