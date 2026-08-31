@@ -1,7 +1,7 @@
 import { pagePath } from '@/constants/pagePath';
 
 import TouchLink from '@/components/atoms/TouchLink/TouchLink';
-import Text from '@/components/atoms/Text/text';
+import Text from '@/components/atoms/Text/Text';
 
 export default function PrivacyPolicyNotice() {
 
