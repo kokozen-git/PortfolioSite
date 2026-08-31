@@ -1,7 +1,7 @@
 import Container from "@/components/ui/container";
 
 import { H1 ,H2 } from "@/components/atoms/heading/page";
-import Text        from "@/components/atoms/Text/text";
+import Text        from "@/components/atoms/Text/Text";
 
 export default function Home() {
   return (
