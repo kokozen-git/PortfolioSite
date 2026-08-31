@@ -1,8 +1,8 @@
 'use client'
 import { useRouter } from "next/navigation";
-import Header from "@/components/layout/header";
+import Header from "@/components/templetes/header";
 import Main from "@/components/layout/main";
-import PageHero from "@/components/layout/PageHero";
+import PageHero from "@/components/layout/HeroSection";
 import ToggleButton from "@/components/ui/toggleButton";
 import Link from "next/link";
 

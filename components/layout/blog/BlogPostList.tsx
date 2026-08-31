@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import Image from "next/image";
-import { Text } from "@/components/ui/text";
+import { Text } from "@/components/atoms/Text/Page";
 
 type Post = {
   title: string;
@@ -18,7 +18,7 @@ export default function BlogPostList({ posts }: { posts: Post[] }) {
   
   return (
     <ul
-      className="flex flex-wrap gap-12"
+      className="flex flex-wrap gap-12 sm:gap-6"
     >
       {posts.map((post) => (
         <li 

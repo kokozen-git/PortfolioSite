@@ -1,15 +1,14 @@
-import Header from "@/components/layout/header";
+import Header from "@/components/templetes/header";
 import Main from "@/components/layout/main";
-import { H1 ,H2 } from "@/components/ui/heading";
-import { Text } from "@/components/ui/text";
+import Container from "@/components/ui/container";
+import { H1 ,H2 } from "@/components/atoms/heading/page";
+import { Text } from "@/components/atoms/Text/Page";
 export default function Home() {
   return (
     <>
       <Header/>
       <Main>
-        <section
-          className="bg-gray-200 w-2xl m-auto min-h-screen px-6 py-16"
-        >
+        <Container>
           <H1 className="text-black text-center">
             プライバシーポリシー
           </H1>
@@ -77,7 +76,7 @@ export default function Home() {
               当サイトのお問い合わせフォームよりご連絡ください。
             </Text>
           </div>
-        </section>
+        </Container>
     
       </Main>
     </>
