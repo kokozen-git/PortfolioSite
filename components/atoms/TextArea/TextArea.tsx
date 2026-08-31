@@ -1,4 +1,4 @@
-import type { TextAreaProps } from "@/types/ui/textAreaProps";
+import type { TextAreaProps } from "@/types/ui/TextAreaProps";
 import { twMerge } from "tailwind-merge";
 
 export default function TextArea({

@@ -11,7 +11,7 @@ export default function ContactCompletePage() {
     <>
         <Header/>
         <Main>
-            <PageHero 
+            <HeroSection 
                 sectionName="contact-complete-heading"
                 title="お問い合わせ完了"
                 description=
