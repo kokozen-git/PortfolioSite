@@ -17,21 +17,20 @@ export default function PageHero({
   return (
     <section className="w-full h-full" aria-labelledby={sectionName}>
         <div
-            className="relative w-full h-100 bg-cover bg-center py-24 px-16"
+            className="relative w-full bg-cover bg-center"
             style={{ backgroundImage: `url('${imageSrc}')` }}
         >
-            {/* オーバーレイ */}
             <div className="absolute inset-0 bg-black/40" />
-  
-            {/* テキストは相対配置＆z-indexで前面に */}
-            <div className="relative">
+            <div className="relative px-3 py-9 md:py-24 md:px-16 text-sm">
                 <H1 
                     id={sectionName}
                     className="w-[70%] text-white"
                 >
                     {title}
                 </H1>
-                <Text className="font-semibold w-[70%] text-white">{description}</Text>
+                <Text className="font-semibold w-full md:w-[70%] text-white">
+                    {description}
+                </Text>
             </div>
         </div>
     </section>

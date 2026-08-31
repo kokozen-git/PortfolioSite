@@ -37,7 +37,10 @@ export default function Header() {
 
   return (
     <header 
-      className="relative z-30 top-0 left-0 w-full flex items-center justify-between px-5 md:px-16 py-6 border-b-3 border-[var(--mainColor)]"
+      className="
+        relative z-30 top-0 left-0 w-full flex items-center justify-between 
+        px-5 md:px-16 py-3 md:py-6 border-b-3 border-[var(--mainColor)]
+        "
     >
       <Link href="/">
         <div className="relative w-30 md:w-36 h-12 z-10">
