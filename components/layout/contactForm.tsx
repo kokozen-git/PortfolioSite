@@ -1,12 +1,12 @@
 'use client'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Label from "@/components/ui/label";
-import Input from "@/components/ui/input";
-import TextArea from "@/components/ui/textarea";
-import ErrorText from "@/components/ui/errorText";
-import Button from "@/components/ui/buttons/button";
-import ConfirmModal from "./confirmModal";
+
+import Button from "@/components/atoms/button/button";
+import ConfirmModal from "../organisms/ConfirmModal/confirmModal";
+import TextInput from "@/components/atoms/TextInput/TextInput";
+import TextArea from "@/components/atoms/TextArea/TextArea";
+import FormField from "@/components/molecules/FormField/FormField";
 
 type FormValues = {
   name: string;
@@ -75,59 +75,47 @@ export default function ContactForm() {
     <>
       <form onSubmit={handleConfirm}>
         <div className="space-y-6">
-          <div>
-            <Label 
-              htmlFor="name"
-              text="お名前"
-              isRequired={true}
-            />
-            <Input 
+          <FormField
+            htmlFor="name"
+            label="お名前"
+            isRequired
+            error={errors.name}
+          >
+            <TextInput
               id="name"
               name="name"
-              type="text"
-              isRequired={true}
               placeholder="米倉 巧"
             />
-            <ErrorText
-              message={errors.name}
-            />
-          </div>
-          
-          <div>
-            <Label 
-              htmlFor="email"
-              text="メールアドレス"
-              isRequired={true}
-            />
-            <Input 
+          </FormField>
+
+          <FormField
+            htmlFor="email"
+            label="メールアドレス"
+            isRequired
+            error={errors.email}
+          >
+            <TextInput
               id="email"
               name="email"
               type="email"
-              isRequired={true}
-              placeholder="hoge@examle.com"
+              placeholder="hoge@example.com"
             />
-            <ErrorText
-              message={errors.email}
-            />
-          </div>
-          
-          <div>
-            <Label 
-              htmlFor="message"
-              text="本文"
-              isRequired={true}
-            />
-            <TextArea 
+          </FormField>
+
+          <FormField
+            htmlFor="message"
+            label="本文"
+            isRequired
+            error={errors.message}
+          >
+            <TextArea
               id="message"
               name="message"
-              isRequired={true}
               placeholder="お問い合わせ内容"
               maxLength={4096}
             />
-            <ErrorText
-              message={errors.message}
-            />
-          </div>
+          </FormField>
+          
           <div className="flex justify-center">
             <Button type="submit" text="確認" />
           </div>

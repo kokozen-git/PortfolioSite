@@ -22,13 +22,26 @@ function extractThumbnailFromContent(html?: string): string | null {
 }
 
 export async function getNotePosts(): Promise<Post[]> {
-  const feed = await parser.parseURL(SocialMedias[3].href + "/rss");
+
+  const url = SocialMedias[3].href + "/rss";
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch RSS: ${response.status}`);
+  }
+
+  const xml = await response.text();
+  const feed = await parser.parseString(xml);
 
   return feed.items.map((item) => ({
     title: item.title ?? "",
     link: item.link ?? "",
     pubDate: item.pubDate ?? "",
-    excerpt: (item.contentSnippet ?? "").replace(/続きをみる\s*$/, "").trim(),
-    thumbnail: item.thumbnail ?? extractThumbnailFromContent(item.content),
+    excerpt: (item.contentSnippet ?? "")
+      .replace(/続きをみる\s*$/, "")
+      .trim(),
+    thumbnail:
+      item.thumbnail ?? extractThumbnailFromContent(item.content),
   }));
 }

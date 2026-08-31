@@ -1,17 +1,17 @@
 'use client'
 import { useRouter } from "next/navigation";
-import Header from "@/components/layout/header";
+import Header from "@/components/templetes/header";
 import Main from "@/components/layout/main";
-import PageHero from "@/components/layout/PageHero";
 import ToggleButton from "@/components/ui/toggleButton";
 import Link from "next/link";
+import HeroSection from "@/components/organisms/HeroSection/HeroSection";
 
 export default function ContactCompletePage() {
   return (
     <>
         <Header/>
         <Main>
-            <PageHero 
+            <HeroSection 
                 sectionName="contact-complete-heading"
                 title="お問い合わせ完了"
                 description=

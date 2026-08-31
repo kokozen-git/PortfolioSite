@@ -2,13 +2,20 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
+import Footer from "@/components/layout/footer";
+import Header from "@/components/templetes/header";
+import Main from "@/components/layout/main";
+
 const notoSans = Noto_Sans_JP({
   weight: ["400", "500", "700"], // 使うウェイトを指定
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "cocozen-museum",
+  title: {
+    default: "cocozen-museum",
+    template: "%s | cocozen-museum",
+  },
   description: "ココゼンの制作物ポートフォリオサイト",
   icons: {
     icon: "/favicon.ico",
@@ -26,7 +33,7 @@ export const metadata: Metadata = {
   },
   robots: {
     index: true,
-    follow: false,
+    follow: true,
   },
 };
 
@@ -36,7 +43,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ja"
       className={`${notoSans.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <Header />
+        <Main>
+          {children}
+        </Main>
+        <Footer />
+      </body>
     </html>
   );
 }
