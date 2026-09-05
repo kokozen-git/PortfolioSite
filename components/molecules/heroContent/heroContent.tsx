@@ -1,6 +1,6 @@
 import type { HeroContentProp } from "@/types/ui/heroSection";
 
-import { H1 } from "@/components/atoms/heading/page";
+import { H1 } from "@/components/atoms/Heading/Heading";
 import Text   from "@/components/atoms/Text/Text";
 
 export default function HeroContent({ id, title, description }: HeroContentProp) {

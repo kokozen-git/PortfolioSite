@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Button from "@/components/atoms/button/button";
+import Button from "@/components/atoms/Button/button";
 import ConfirmModal from "../organisms/ConfirmModal/confirmModal";
 import TextInput from "@/components/atoms/TextInput/TextInput";
 import TextArea from "@/components/atoms/TextArea/TextArea";
@@ -34,7 +34,7 @@ export default function ContactForm() {
     const newErrors: Partial<FormValues> = {};
     if (!values.name) newErrors.name = "お名前を入力してください";
     if (!values.email) newErrors.email = "メールアドレス形式で入力してください";
-    if (!values.message) newErrors.message = "本文を入力してください";
+    if (!values.message) newErrors.message = "本�?を�?�力してください";
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
@@ -63,9 +63,9 @@ export default function ContactForm() {
         return;
       }
 
-      setSubmitError(data.error ?? "送信に失敗しました。時間をおいて再度お試しください。");
+      setSubmitError(data.error ?? "送信に失敗しました。時間をおいて再度お試しく�?さい�?");
     } catch {
-      setSubmitError("通信エラーが発生しました。ネットワーク環境をご確認ください。");
+      setSubmitError("通信エラーが発生しました。ネ�?トワーク環�?をご確認く�?さい�?");
     } finally {
       setIsSubmitting(false);
     }
@@ -77,14 +77,14 @@ export default function ContactForm() {
         <div className="space-y-6">
           <FormField
             htmlFor="name"
-            label="お名前"
+            label="お名�?"
             isRequired
             error={errors.name}
           >
             <TextInput
               id="name"
               name="name"
-              placeholder="米倉 巧"
+              placeholder="米�? 巧"
             />
           </FormField>
 
@@ -104,20 +104,20 @@ export default function ContactForm() {
 
           <FormField
             htmlFor="message"
-            label="本文"
+            label="本�?"
             isRequired
             error={errors.message}
           >
             <TextArea
               id="message"
               name="message"
-              placeholder="お問い合わせ内容"
+              placeholder="お問�?合わせ�??容"
               maxLength={4096}
             />
           </FormField>
           
           <div className="flex justify-center">
-            <Button type="submit" text="確認" />
+            <Button type="submit" text="確�?" />
           </div>
         </div>
       </form>

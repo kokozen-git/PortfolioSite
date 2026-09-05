@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-import { H2 }      from "@/components/atoms/heading/page";
+import { H2 }      from "@/components/atoms/Heading/Heading";
 import ConfirmList from "@/components/molecules/ConfirmList/ConfirmList";
-import Button      from "@/components/atoms/button/button";
+import Button      from "@/components/atoms/Button/button";
 
 
 type ConfirmModalProps = {
@@ -33,7 +33,7 @@ export default function ConfirmModal({
 
   const fields = [
     {
-      label: "お名前",
+      label: "お名?��?",
       value: values.name,
     },
     {
@@ -41,7 +41,7 @@ export default function ConfirmModal({
       value: values.email,
     },
     {
-      label: "本文",
+      label: "本?��?",
       value: values.message,
     },
   ];
@@ -49,7 +49,7 @@ export default function ConfirmModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
       <div className="w-full max-w-2xl rounded-lg bg-white p-8 shadow-xl">
-        <H2 className="py-2 md:py-4">送信内容の確認</H2>
+        <H2 className="py-2 md:py-4">送信?��?容の確?��?</H2>
         <ConfirmList fields={fields}/>
 
         <div className="flex gap-4">
