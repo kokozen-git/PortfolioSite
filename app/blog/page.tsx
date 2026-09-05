@@ -1,8 +1,11 @@
 import { getNotePosts } from "@/lib/getNote";
 
-import Container from "@/components/ui/container";
-import BlogPostList from "@/components/layout/blog/BlogPostList";
+import Container from "@/components/atoms/Container/container";
+import PostList from "@/components/organisms/PostList/PostList";
 import HeroSection from "@/components/organisms/HeroSection/HeroSection";
+import Button from "@/components/atoms/Button/KariButton";
+import Link from "next/link";
+
 
 //1時間ごとにISR再生成
 export const revalidate = 3600; 
@@ -22,11 +25,13 @@ export default async function BlogPage() {
         imageSrc="/images/blog.jpg"
       />
       <Container>
-        <BlogPostList posts={posts}/>
-        <a href="/#">
-          noteページを見に行く
-        </a>
-      </Container>  
+        <PostList posts={posts}/>
+      </Container> 
+      <Container>
+        <Link href="/">
+          <Button text="noteページを見に行く"/>
+        </Link>
+      </Container>
     </>
   );
 }

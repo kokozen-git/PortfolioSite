@@ -1,6 +1,6 @@
 import HeroSection         from "@/components/organisms/HeroSection/HeroSection";
 import PrivacyPolicyNotice from '@/components/molecules/PrivacyPolicyNotice/PrivacyPolicyNotice';
-import Container           from '@/components/atoms/container/container';
+import Container           from '@/components/atoms/Container/container';
 
 import ContactForm from "@/components/organisms/ContactForm/ContactForm";
 

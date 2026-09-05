@@ -1,6 +1,8 @@
 import HeroSection from "@/components/organisms/HeroSection/HeroSection";
-import Container   from "@/components/atoms/container/container";
+
 import Text from "@/components/atoms/Text/Text";
+import Container from "@/components/atoms/Container/container";
+
 
 export default function errorPage(){
   return (

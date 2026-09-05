@@ -1,11 +1,10 @@
-// components/ui/Button.tsx
-type ButtonProps = {
-  type?: "button" | "submit" | "reset";
+import type { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
+
+type ButtonProps = ComponentProps<"button"> & {
   text: string;
-  onClick?: () => void;
-  disabled?: boolean;
   variant?: "primary" | "outline";
-  fullWidth?: boolean; // 追加：flex-1が必要な時だけtrueにする
+  fullWidth?: boolean;
 };
 
 const variantStyles = {
@@ -14,19 +13,21 @@ const variantStyles = {
 };
 
 export default function Button({
-  type = "button",
   text,
-  onClick,
-  disabled = false,
   variant = "primary",
   fullWidth = false,
+  className,
+  ...props
 }: ButtonProps) {
   return (
     <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`${fullWidth ? "flex-1" : ""} px-8 py-3 rounded-full font-bold transition-colors disabled:opacity-50 ${variantStyles[variant]}`}
+      {...props}
+      className={twMerge(
+        "rounded-full px-8 py-3 font-bold transition-colors disabled:opacity-50",
+        variantStyles[variant],
+        fullWidth && "flex-1",
+        className
+      )}
     >
       {text}
     </button>

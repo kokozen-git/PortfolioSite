@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Button from "@/components/atoms/button/button";
+import Button from "@/components/atoms/Button/button";
 import TextInput from "@/components/atoms/TextInput/TextInput";
 import TextArea from "@/components/atoms/TextArea/TextArea";
 import FormField from "@/components/molecules/FormField/FormField";
@@ -44,7 +44,7 @@ export default function ContactForm() {
     const newErrors: Partial<FormValues> = {};
     if (!values.name) newErrors.name = "お名前を入力してください";
     if (!values.email) newErrors.email = "メールアドレス形式で入力してください";
-    if (!values.message) newErrors.message = "本文を入力してください";
+    if (!values.message) newErrors.message = "本�?を�?�力してください";
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
@@ -73,9 +73,9 @@ export default function ContactForm() {
         return;
       }
 
-      setSubmitError(data.error ?? "送信に失敗しました。時間をおいて再度お試しください。");
+      setSubmitError(data.error ?? "送信に失敗しました。時間をおいて再度お試しく�?さい�?");
     } catch {
-      setSubmitError("通信エラーが発生しました。ネットワーク環境をご確認ください。");
+      setSubmitError("通信エラーが発生しました。ネ�?トワーク環�?をご確認く�?さい�?");
     } finally {
       setIsSubmitting(false);
     }
@@ -85,9 +85,9 @@ export default function ContactForm() {
     {
       id: "name",
       name: "name",
-      label: "お名前",
+      label: "お名�?",
       component: TextInput,
-      placeholder: "米倉 巧",
+      placeholder: "米�? 巧",
     },
     {
       id: "email",
@@ -100,9 +100,9 @@ export default function ContactForm() {
     {
       id: "message",
       name: "message",
-      label: "本文",
+      label: "本�?",
       component: TextArea,
-      placeholder: "お問い合わせ内容",
+      placeholder: "お問�?合わせ�??容",
       maxLength: 2048,
     },
   ];
@@ -133,7 +133,7 @@ export default function ContactForm() {
           })}
           
           <div className="flex justify-center">
-            <Button type="submit" text="確認" />
+            <Button type="submit" text="確�?" />
           </div>
         </div>
       </form>
