@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Button from "@/components/atoms/Button/button";
 import TextInput from "@/components/atoms/TextInput/TextInput";
 import TextArea from "@/components/atoms/TextArea/TextArea";
 import FormField from "@/components/molecules/FormField/FormField";
 import ConfirmModal from "@/components/organisms/ConfirmModal/confirmModal";
+import Button from "@/components/atoms/Button/button";
 
 type FormValues = {
   name: string;
@@ -44,7 +44,7 @@ export default function ContactForm() {
     const newErrors: Partial<FormValues> = {};
     if (!values.name) newErrors.name = "お名前を入力してください";
     if (!values.email) newErrors.email = "メールアドレス形式で入力してください";
-    if (!values.message) newErrors.message = "本�?を�?�力してください";
+    if (!values.message) newErrors.message = "本文を入力してください";
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
